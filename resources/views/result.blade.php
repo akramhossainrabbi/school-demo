@@ -45,7 +45,7 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Name</th>
+                            <th>Total</th>
                             <th>GPA</th>
                         </tr>
                     </tfoot>
@@ -55,6 +55,7 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $student->name }}</td>
+                                <td>{{ $student->results()->sum('mark') }}</td>
                                 <td>
                                     @if($student->results->contains('gpa', 0))
                                         0
@@ -81,7 +82,7 @@
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable({
-                order: [[2, 'desc']],
+                order: [[3, 'desc']],
             });
         });
     </script>
